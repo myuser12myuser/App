@@ -1,0 +1,52 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name: "main"
+
+    GridLayout:
+        cols:1
+
+        GridLayout:
+            cols: 1
+
+            Camera:
+                id: camera
+                play: False
+            ToggleButton:
+                text: 'Play'
+                on_press: camera.play = not camera.play
+                size_hint_y: None
+                height: '48dp'
+
+
+
+
+
+        Button:
+            text: "Submit"
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = "left"
+            on_press: root.capture()
+
+
+<SecondWindow>:
+    name: "second"
+
+    Button:
+        text: "root.id1"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+        on_press: root.captureS()
+        Image:
+            source: 'IMG_20220224_020452.png'
+            y: self.parent.y + self.parent.height - 450
+            x: self.parent.x
+            size: 450, 450
+            allow_stretch: True
+
+
+
